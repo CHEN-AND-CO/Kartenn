@@ -21,8 +21,8 @@ configure() {
     read -p 'PostGis User: ' postgisUser
     read -sp 'PostGis Password: ' postgisPass
 
-    sh install/installKartennClient.sh $hostname
     sh install/installKartennAPI.sh $kartennapiUser $kartennapiPass $hostname
+    sh install/installKartennClient.sh $hostname
     sh install/installKartennDB.sh $database $postgisUser $postgisPass
     sh install/installKartennGenerator.sh $database $postgisUser $postgisPass
 }
