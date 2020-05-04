@@ -1,4 +1,4 @@
-var db = connect('127.0.0.1');
+var db = connect('');
 
 db = db.getSiblingDB('admin');
 
