@@ -42,7 +42,7 @@ configure(){
     mkdir -p www/maps
 
     sudo chown -R www-data:www-data www
-    sudo $apacheConf > /etc/apache2/sites-available/kartennClient.conf
+    echo $apacheConf | sudo tee /etc/apache2/sites-available/kartennClient.conf 
     sudo a2ensite kartennClient.conf
 }
 

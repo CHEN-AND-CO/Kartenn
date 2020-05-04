@@ -25,7 +25,7 @@ ExecStart=$dir/startKartennAPI.sh
 [Install]
 WantedBy=multi-user.target"
 
-sudo echo $service > /etc/systemd/system/kartennapi.service
+echo $service | sudo tee /etc/systemd/system/kartennapi.service
 sudo chmod 644 /etc/systemd/system/kartennapi.service
 
 sudo systemctl enable kartennapi
