@@ -7,22 +7,21 @@ apipass=$2
 host=$3
 curdir=$(pwd)
 
-consts="        
-    var consts = {
-        host: \"localhost\",                          
-        db: \"kartenn_api\",                         
-        authSource: \"admin\",                      
-        user: \"$apiuser\",                         
-        pass: \"$apipass\",               
-        SSLCertificateFile: \"./fullchain.pem\",    
-        SSLCertificateKeyFile: \"./privkey.pem\",
-        https: false,
-        outputDir: \"$curdir/www/maps/\",    
-        generatorPath: \"$curdir/KartennGenerator\",         
-        mapsUrl: \"http://$host/maps/\"
-    };
+consts=$'var consts = {
+    host: "localhost",                          
+    db: "kartenn_api",                         
+    authSource: "admin",                      
+    user: "'$apiuser'",                         
+    pass: "'$apipass'",               
+    SSLCertificateFile: "./fullchain.pem",    
+    SSLCertificateKeyFile: "./privkey.pem",
+    https: false,
+    outputDir: "'$curdir'/www/maps/",    
+    generatorPath: "'$curdir'/KartennGenerator",         
+    mapsUrl: "http://'$host'/maps/"
+};
 
-    module.exports = consts;"
+module.exports = consts;'
 
 dependencies() {
     sudo apt update
@@ -65,7 +64,7 @@ configure() {
     ./scripts/createKartennAPIService.sh $curdir
     echo "KartennAPI is now accessible on screen -r kartennAPI"
 
-    echo $consts > KartennAPI/config/consts.js
+    echo "$consts" > KartennAPI/config/consts.js
 }
 
 build() {

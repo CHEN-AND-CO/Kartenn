@@ -6,26 +6,26 @@ dir=$1
 appuser=$(whoami)
 appgroup=$appuser
 
-service="[Unit]
+service=$'[Unit] 
 Description=KartennAPI Service
 After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=$dir
+WorkingDirectory='$dir'
 
-User=$appuser
-Group=$appgroup
+User='$appuser'
+Group='$appgroup'
 UMask=007
 
 Restart=always
 
-ExecStart=$dir/startKartennAPI.sh
+ExecStart='$dir'/startKartennAPI.sh
 
 [Install]
-WantedBy=multi-user.target"
+WantedBy=multi-user.target'
 
-echo $service | sudo tee /etc/systemd/system/kartennapi.service
+echo "$service" | sudo tee /etc/systemd/system/kartennapi.service
 sudo chmod 644 /etc/systemd/system/kartennapi.service
 
 sudo systemctl enable kartennapi

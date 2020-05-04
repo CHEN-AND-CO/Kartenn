@@ -14,14 +14,14 @@ dependencies(){
 
 configure(){
     dsp=$(mapnik-config --input-plugins)
-    config="{
-        \"DATASOURCES_PATH\": $dsp,
-        \"PSQL_DB\": $database,
-        \"PSQL_USER\": $dbuser,
-        \"PSQL_PASS\": $dbpass,
-    }"
+    config='{
+    "DATASOURCES_PATH": "'$dsp'",
+    "PSQL_DB": "'$database'",
+    "PSQL_USER": "'$dbuser'",
+    "PSQL_PASS": "'$dbpass'",
+}'
 
-    echo $config > config.json
+    echo "$config" > config.json
 }
 
 build(){
