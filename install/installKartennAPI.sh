@@ -33,7 +33,10 @@ dependencies() {
     echo "Nvm, nodejs and yarn installation..."
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     nvm install node
-    curl -o- -L https://yarnpkg.com/install.sh | bash
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt update
+    sudo apt -y install yarn
 
     # MONGODB INSTALL
     echo "Tries to install MongoDB (tested for Debian 10 (Buster) here), if that's not working, please follow the installation instructions according to you distro here : https://docs.mongodb.com/manual/administration/install-community/"
