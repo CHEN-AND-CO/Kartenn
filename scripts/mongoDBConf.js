@@ -1,5 +1,3 @@
-var db = connect('');
-
 db = db.getSiblingDB('admin');
 
 if (kartUser === undefined) {
