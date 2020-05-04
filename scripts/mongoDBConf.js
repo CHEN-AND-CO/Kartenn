@@ -1,3 +1,5 @@
+var db = connect('127.0.0.1');
+
 db = db.getSiblingDB('admin');
 
 if (kartUser === undefined) {
