@@ -1,16 +1,7 @@
-const { connect } = require('mongo')
-const { argv } = require('process')
-
-
-let db = connect("localhost");
-
 db = db.getSiblingDB('admin');
 
-let kartUser = argv[2];
-let kartPassword = argv[3];
-
 if (kartUser === undefined) {
-    kartUser = "Kartenn";
+    var kartUser = "Kartenn";
 }
 
 db.createUser(

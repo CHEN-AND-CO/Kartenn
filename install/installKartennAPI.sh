@@ -51,13 +51,11 @@ dependencies() {
     sudo systemctl enable mongod
     sudo systemctl start mongod
     yarn install
-    yarn global add mongo
-    yarn link mongo
 }
 
 configure() {
     echo "Configuring your MongoDB database..."
-    node ./scripts/mongoDBConf.js $apiuser $apipass
+    mongo ./scripts/mongoDBConf.js --eval "var kartUser=\"$apiuser\", kartPassword=\"$apipass\"" 
     echo "Copying auth enabled conf..."
     sudo cp -f ./conf/mongod.conf /etc/mongod.conf
     echo "Restarting MongoDB"
