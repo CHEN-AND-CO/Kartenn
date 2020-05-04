@@ -3,6 +3,7 @@
 set -e
 
 host=$1
+comment=$2
 curdir=$(pwd)
 
 constants=$'export default {
@@ -12,7 +13,7 @@ constants=$'export default {
 };'
 
 apacheConf=$'<VirtualHost *:80>
-    ServerName '$host'
+    '$comment'ServerName '$host'
 
     DocumentRoot '$curdir'/www
 

@@ -14,7 +14,14 @@ dependencies() {
 }
 
 configure() {
-    read -p 'Hostname or domain name: ' hostname
+    read -p 'Domain name (Press enter if you do not have one): ' hostname
+    if test -z "$hostname"
+    then
+        echo "Domain name config mode"
+    else
+        read -p 'Hostname name: ' hostname
+        comment="#"
+    fi
     read -p 'Database name: ' database
     read -p 'MongoDB User: ' kartennapiUser
     read -p 'MongoDB Password: ' kartennapiPass
@@ -22,7 +29,7 @@ configure() {
     read -p 'PostGis Password: ' postgisPass
 
     ./install/installKartennAPI.sh $kartennapiUser $kartennapiPass $hostname
-    ./install/installKartennClient.sh $hostname
+    ./install/installKartennClient.sh $hostname $comment
     ./install/installKartennDB.sh $database $postgisUser $postgisPass
     ./install/installKartennGenerator.sh $database $postgisUser $postgisPass
 }
