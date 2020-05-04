@@ -46,10 +46,5 @@ configure(){
     sudo a2ensite kartennClient.conf
 }
 
-build(){
-
-}
-
 dependencies
 configure
-build

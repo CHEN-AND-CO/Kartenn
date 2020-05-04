@@ -56,10 +56,5 @@ configure() {
     exit
 }
 
-build() {
-    
-}
-
 dependencies
 configure
-build
