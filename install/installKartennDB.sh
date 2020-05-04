@@ -19,6 +19,7 @@ dependencies() {
     # POSTGIS INSTALL
     echo "PostGis installation..."
     sudo apt -y install postgresql-12-postgis-* postgis* osm2pgsql
+    sudo pg_ctlcluster 12 main start
 
     # PGADMIN4 INSTALL
     echo "PgAdmin4 installation..."

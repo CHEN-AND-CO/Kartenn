@@ -8,9 +8,9 @@ dependencies() {
     echo "Install tools..."
     sudo apt install -y git wget
 
-    git clone https://github.com/CHEN-AND-CO/KartennClient.git
     git clone https://github.com/CHEN-AND-CO/KartennAPI.git
     git clone https://github.com/CHEN-AND-CO/KartennGenerator.git
+    git clone https://github.com/CHEN-AND-CO/KartennClient.gits
 }
 
 configure() {
