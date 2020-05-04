@@ -27,17 +27,17 @@ dependencies() {
 
 configure() {
     echo "Configuring postgres..."
-    sudo su - postgres
+    # sudo su - postgres
 
     read -s -p "New Postgres Password: " postgrespassword
-    psql -c "alter user postgres with password '$postgresspassword'"
-    createuser -S -R -D $kartuser
-    createdb $database -O $kartuser
+    sudo -u postgres -H sh -c `psql -c "alter user postgres with password '$postgresspassword'"`
+    sudo -u postgres -H sh -c `createuser -S -R -D $kartuser`
+    sudo -u postgres -H sh -c `createdb $database -O $kartuser`
 
-    exit
+    # exit
 
     echo "Configuring PostGis..."
-    psql -d $database -U $user -tq -c " CREATE EXTENSION postgis;
+    sudo -u postgres -H sh -c `psql -d $database -U $user -tq -c " CREATE EXTENSION postgis;
                                         CREATE EXTENSION postgis_raster;
                                         CREATE EXTENSION postgis_topology;
                                         CREATE EXTENSION postgis_sfcgal;
@@ -45,15 +45,15 @@ configure() {
                                         CREATE EXTENSION address_standardizer;
                                         CREATE EXTENSION address_standardizer_data_us;
                                         CREATE EXTENSION postgis_tiger_geocoder;
-                                        CREATE EXTENSION hstore;"
+                                        CREATE EXTENSION hstore;"`
 
     echo "Adding Data to PostGis"
     sh ./scripts/getMaps.sh $database $kartuser
 
     echo "Configuring kartenn access..."
-    sudo su - postgres
-    psql -c "alter user $kartuser with password '$kartpass'"
-    exit
+    # sudo su - postgres
+    sudo -u postgres -H sh -c `psql -c "alter user $kartuser with password '$kartpass'"`
+    # exit
 }
 
 dependencies
