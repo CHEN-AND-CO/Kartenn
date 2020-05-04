@@ -51,8 +51,8 @@ dependencies() {
     sudo systemctl enable mongod
     sudo systemctl start mongod
     yarn install
-    yarn global add mongodb
-    yarn link mongodb
+    yarn global add mongo
+    yarn link mongo
 }
 
 configure() {

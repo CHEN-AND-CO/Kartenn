@@ -1,4 +1,4 @@
-const { connect } = require('mongodb')
+const { connect } = require('mongo')
 const { argv } = require('process')
 
 
