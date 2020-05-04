@@ -38,7 +38,7 @@ configure() {
     # exit
 
     echo "Configuring PostGis..."
-    sudo -u postgres -H sh -c "psql -d $database -U $karuser -tq -c \" CREATE EXTENSION postgis;
+    sudo -u postgres -H sh -c "psql -d $database -U $kartuser -tq -c \" CREATE EXTENSION postgis;
                                         CREATE EXTENSION postgis_raster;
                                         CREATE EXTENSION postgis_topology;
                                         CREATE EXTENSION postgis_sfcgal;
