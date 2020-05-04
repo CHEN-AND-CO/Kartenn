@@ -46,5 +46,10 @@ configure(){
     sudo a2ensite kartennClient.conf
 }
 
+build(){
+    sudo systemctl restart apache2
+}
+
 dependencies
 configure
+build
