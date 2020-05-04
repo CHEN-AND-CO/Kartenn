@@ -15,7 +15,7 @@ dependencies() {
 
 configure() {
     read -p 'Domain name (Press enter if you do not have one): ' hostname
-    if [["$hostname" == ""]]
+    if [$hostname == ""];
     then
         echo "Domain name config mode"
     else
