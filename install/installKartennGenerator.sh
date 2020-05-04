@@ -7,7 +7,7 @@ dbuser=$2
 dbpass=$3
 
 dependencies(){
-    cd KartennGenerator
+    cd Generator
     ./install.sh
     cd ..
 }
@@ -25,7 +25,7 @@ configure(){
 }
 
 build(){
-    cp KartennGenerator/build/KartennGenerator KartennGenerator
+    cp Generator/build/KartennGenerator .
     chmod +x KartennGenerator
 }
 
