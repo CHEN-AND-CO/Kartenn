@@ -30,8 +30,8 @@ configure() {
     echo "Configuring postgres..."
     # sudo su - postgres
 
-    read -sp "New Postgres Password: " postgrespassword
-    sudo -u postgres -H sh -c "psql -c \"alter user postgres with password '$postgresspassword'\""
+    read -p "New Postgres Password: " -s postgrespassword
+    sudo -u postgres -H psql -c "alter user postgres with password '$postgresspassword'"
     sudo -u postgres -H sh -c "createuser -S -R -D $kartuser"
     sudo -u postgres -H sh -c "createdb $database -O $kartuser"
 
