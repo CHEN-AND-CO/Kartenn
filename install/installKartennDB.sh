@@ -49,7 +49,7 @@ configure() {
                                         CREATE EXTENSION hstore;"`
 
     echo "Adding Data to PostGis"
-    sh ./scripts/getMaps.sh $database $kartuser
+    ./scripts/getMaps.sh $database $kartuser
 
     echo "Configuring kartenn access..."
     # sudo su - postgres
