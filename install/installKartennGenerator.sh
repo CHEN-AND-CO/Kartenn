@@ -25,7 +25,7 @@ configure(){
 }
 
 build(){
-    cp KartennGenerator/build/KartennGenerator .
+    cp KartennGenerator/build/KartennGenerator KartennGenerator
     chmod +x KartennGenerator
 }
 
