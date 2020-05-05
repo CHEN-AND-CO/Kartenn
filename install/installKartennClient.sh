@@ -40,7 +40,7 @@ configure(){
     cd ..
 
     sudo mkdir -p www
-    sudo cp -r KartennClient/dist www
+    sudo cp -r KartennClient/dist/* www
     sudo mkdir -p www/maps
 
     sudo chown -R www-data:www-data www
