@@ -27,10 +27,10 @@ configure() {
     read -p 'MongoDB User: ' kartennapiUser
     read -p 'MongoDB Password: ' kartennapiPass
 
+    ./install/installKartennDB.sh $database $postgisPass
+    ./install/installKartennGenerator.sh $database $postgisPass
     ./install/installKartennAPI.sh $kartennapiUser $kartennapiPass $hostname
     ./install/installKartennClient.sh $hostname $comment
-    ./install/installKartennDB.sh $database $postgisPass
-    ./install/installKartennGenerator.sh $database $postgisUser $postgisPass
 }
 
 dependencies

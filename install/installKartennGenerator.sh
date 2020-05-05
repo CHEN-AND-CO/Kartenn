@@ -3,8 +3,8 @@
 set -e
 
 database=$1
-dbuser=$2
-dbpass=$3
+dbuser=$(whoami)
+dbpass=$2
 
 dependencies(){
     cd Generator

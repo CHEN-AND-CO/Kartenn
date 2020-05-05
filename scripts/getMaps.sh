@@ -43,5 +43,11 @@ configure(){
     osm2pgsql bretagne.osm -d $database -U $dbuser --hstore --slim --create
 }
 
+build(){
+    ./scripts/generateGeoJSON.sh $database $dbuser bretagne.geojson
+    cp wsg84fix.bretagne.geojson.min.json KartennClient/public
+}
+
 dependencies
 configure
+build
