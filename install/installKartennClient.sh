@@ -43,6 +43,7 @@ configure(){
     sudo chown -R www-data:www-data www
     echo "$apacheConf" | sudo tee /etc/apache2/sites-available/kartennClient.conf 
     sudo a2ensite kartennClient.conf
+    sudo a2dissite 000-default.conf || :
 }
 
 build(){
