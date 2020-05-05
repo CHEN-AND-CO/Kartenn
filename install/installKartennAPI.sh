@@ -49,7 +49,10 @@ dependencies() {
     sudo apt-get install -y mongodb-org
     sudo systemctl enable mongod
     sudo systemctl start mongod
+
+    cd KartennAPI
     yarn install
+    cd ..
 }
 
 configure() {
