@@ -57,7 +57,9 @@ dependencies() {
 
 configure() {
     echo "Configuring your MongoDB database..."
+    echo "Press q to continue ..."
     sudo systemctl status mongod
+    echo "Please enter the admin password"
     mongo ./scripts/mongoDBConf.js --eval "var kartUser=\"$apiuser\", kartPassword=\"$apipass\"" 
     echo "Copying auth enabled conf..."
     sudo cp -f ./conf/mongod.conf /etc/mongod.conf
