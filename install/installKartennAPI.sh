@@ -62,7 +62,7 @@ configure() {
     sudo systemctl restart mongod
 
     echo "Creating KartennAPI service..."
-    ./scripts/createKartennAPIService.sh $curdir
+    ./scripts/createKartennAPIService.sh $curdir/KartennAPI
     echo "KartennAPI is now accessible on screen -r kartennAPI"
 
     echo "$consts" > KartennAPI/config/consts.js
