@@ -18,15 +18,15 @@ configure(){
     "DATASOURCES_PATH": "'$dsp'",
     "PSQL_DB": "'$database'",
     "PSQL_USER": "'$dbuser'",
-    "PSQL_PASS": "'$dbpass'",
+    "PSQL_PASS": "'$dbpass'"
 }'
 
-    echo "$config" > config.json
+    echo "$config" > KartennAPI/config.json
 }
 
 build(){
-    cp Generator/build/KartennGenerator .
-    chmod +x KartennGenerator
+    cp Generator/build/KartennGenerator KartennAPI/
+    chmod +x KartennAPI/KartennGenerator
 }
 
 dependencies
