@@ -16,6 +16,9 @@ apacheConf=$'<VirtualHost *:80>
     '$comment'ServerName '$host'
 
     DocumentRoot '$curdir'/www
+    <Directory '$curdir'/www/>
+        Require all granted
+    </Directory>
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
@@ -37,7 +40,7 @@ configure(){
     cd ..
 
     mkdir -p www
-    cp -r KartennClient/dist wwww
+    cp -r KartennClient/dist www
     mkdir -p www/maps
 
     sudo chown -R www-data:www-data www
