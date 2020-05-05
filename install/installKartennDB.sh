@@ -29,8 +29,8 @@ dependencies() {
 configure() {
     echo "Configuring postgres..."
     # sudo -u postgres -H psql -c "alter user postgres with password '$postgrespassword'"
-    sudo -u postgres -H sh -c "createuser -S -R -D $kartuser"
-    sudo -u postgres -H sh -c "createdb $database -O $kartuser"
+    sudo -u postgres -H sh -c "createuser -S -R -D $kartuser" || :
+    sudo -u postgres -H sh -c "createdb $database -O $kartuser" || :
 
     echo "Configuring PostGis..."
     sudo -u postgres -H psql -d $database -tq -c "CREATE EXTENSION postgis;
