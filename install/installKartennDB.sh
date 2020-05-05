@@ -3,8 +3,8 @@
 set -e
 
 database=$1
-kartuser=$2
-kartpass=$3
+kartuser=$(whoami)
+kartpass=$2
 
 dependencies() {
     sudo apt -y install gnupg2
@@ -28,17 +28,12 @@ dependencies() {
 
 configure() {
     echo "Configuring postgres..."
-    # sudo su - postgres
-
-    read -p "New Postgres Password: " postgrespassword
-    sudo -u postgres -H psql -c "alter user postgres with password '$postgrespassword'"
+    # sudo -u postgres -H psql -c "alter user postgres with password '$postgrespassword'"
     sudo -u postgres -H sh -c "createuser -S -R -D $kartuser"
     sudo -u postgres -H sh -c "createdb $database -O $kartuser"
 
-    # exit
-
     echo "Configuring PostGis..."
-    sudo -u postgres -H sh -c "psql -d $database -U $kartuser -tq -c \" CREATE EXTENSION postgis;
+    psql -d $database -U $kartuser -tq -c "CREATE EXTENSION postgis;
                                         CREATE EXTENSION postgis_raster;
                                         CREATE EXTENSION postgis_topology;
                                         CREATE EXTENSION postgis_sfcgal;
@@ -46,15 +41,13 @@ configure() {
                                         CREATE EXTENSION address_standardizer;
                                         CREATE EXTENSION address_standardizer_data_us;
                                         CREATE EXTENSION postgis_tiger_geocoder;
-                                        CREATE EXTENSION hstore;\""
+                                        CREATE EXTENSION hstore;"
 
     echo "Adding Data to PostGis"
     ./scripts/getMaps.sh $database $kartuser
 
     echo "Configuring kartenn access..."
-    # sudo su - postgres
-    sudo -u postgres -H sh -c "psql -c \"alter user $kartuser with password '$kartpass'\""
-    # exit
+    sudo -u postgres -H psql -c "alter user $kartuser with password '$kartpass'"
 }
 
 dependencies

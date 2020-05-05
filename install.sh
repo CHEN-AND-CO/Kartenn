@@ -22,15 +22,14 @@ configure() {
         read -p 'Hostname name: ' hostname
         comment="#"
     fi
-    read -p 'Database name: ' database
+    read -p 'Database name (postgis): ' database
+    read -p 'PostGis Password: ' postgisPass
     read -p 'MongoDB User: ' kartennapiUser
     read -p 'MongoDB Password: ' kartennapiPass
-    read -p 'PostGis User: ' postgisUser
-    read -p 'PostGis Password: ' postgisPass
 
     ./install/installKartennAPI.sh $kartennapiUser $kartennapiPass $hostname
     ./install/installKartennClient.sh $hostname $comment
-    ./install/installKartennDB.sh $database $postgisUser $postgisPass
+    ./install/installKartennDB.sh $database $postgisPass
     ./install/installKartennGenerator.sh $database $postgisUser $postgisPass
 }
 
