@@ -17,4 +17,7 @@ with open(filePath, 'r') as jsonFile:
             inseeList.append(feature["properties"]["tags"]["ref:INSEE"])
     
     with open(filePath+".list", 'w') as jsonOutFile:
-        json.dump(inseeList, jsonOutFile)
+        for line in inseeList:
+            jsonOutFile.write("%s\n" % line)
+            
+        jsonOutFile.flush()
