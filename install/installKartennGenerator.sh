@@ -26,6 +26,8 @@ configure(){
 
 build(){
     cp Generator/build/KartennGenerator KartennAPI/
+    cp Generator/model.xml KartennAPI/
+    cp Generator/model_simp.xml KartennAPI/
     chmod +x KartennAPI/KartennGenerator
 }
 
