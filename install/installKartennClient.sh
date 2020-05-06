@@ -44,7 +44,7 @@ configure(){
     sudo mkdir -p www
     sudo cp -r KartennClient/dist/* www
     sudo mkdir -p www/maps
-    chmod 777 www/maps
+    sudo chmod 777 www/maps
     sudo chown -R www-data:www-data www
 
     echo "$apacheConf" | sudo tee /etc/apache2/sites-available/kartennClient.conf 
