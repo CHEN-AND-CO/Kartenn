@@ -25,7 +25,7 @@ module.exports = consts;'
 
 dependencies() {
     sudo apt update
-    sudo apt -y install nano bash-completion wget dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl screen
+    sudo apt -y install nano bash-completion wget dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl screen imagemagick
     sudo apt -y upgrade
 
     # NVM & NODEJS & YARN

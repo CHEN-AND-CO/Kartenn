@@ -39,16 +39,17 @@ configure(){
     yarn build
     cd ..
 
-    sudo adduser $(whoami) www-data
+    sudo adduser $(whoami) www-data || :
 
-    sudo mkdir -p www
-    sudo cp -r KartennClient/dist/* www
-    sudo mkdir -p www/maps
-    sudo chmod 777 www/maps
-    sudo chown -R www-data:www-data www
+    sudo mkdir -p www || :
+    sudo cp -r KartennClient/dist/* www || :
+    sudo mkdir -p www/maps || :
+    sudo mkdir -p www/maps/thumbnails || :
+    sudo chmod 777 -R www/maps || :
+    sudo chown -R www-data:www-data www || :
 
     echo "$apacheConf" | sudo tee /etc/apache2/sites-available/kartennClient.conf 
-    sudo a2ensite kartennClient.conf
+    sudo a2ensite kartennClient.conf || :
     sudo a2dissite 000-default.conf || :
 }
 
