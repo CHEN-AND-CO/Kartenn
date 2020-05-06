@@ -41,10 +41,10 @@ configure() {
                                         CREATE EXTENSION address_standardizer;
                                         CREATE EXTENSION address_standardizer_data_us;
                                         CREATE EXTENSION postgis_tiger_geocoder;
-                                        CREATE EXTENSION hstore;"
+                                        CREATE EXTENSION hstore;" || :
 
     echo "Adding Data to PostGis"
-    ./scripts/getMaps.sh $database $kartuser
+    ./scripts/getMaps.sh $database $kartuser || : 
 
     echo "Configuring kartenn access..."
     sudo -u postgres -H psql -c "alter user $kartuser with password '$kartpass'"
