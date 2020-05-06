@@ -13,8 +13,8 @@ with open(filePath, 'r') as jsonFile:
 
     inseeList = []
     for feature in data["features"]:
-        print(feature["properties"]["tags"]["ref:INSEE"])
-        inseeList.append(feature["properties"]["tags"]["ref:INSEE"])
+        if "ref:INSEE" in feature["properties"]["tags"]:
+            inseeList.append(feature["properties"]["tags"]["ref:INSEE"])
     
-    with open("fix."+filePath, 'w') as jsonOutFile:
+    with open(filePath+".list", 'w') as jsonOutFile:
         json.dump(inseeList, jsonOutFile)
