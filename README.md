@@ -3,6 +3,10 @@ Deploy Kartenn Back and Front
 
 ## Usage
 
+### Installer
+```
+./install.sh
+```
 ### Générer un geojson
 ``` ./generateGeoJSON <db> <user> <outputFile>```
 Il sortira 4 Fichiers : 
