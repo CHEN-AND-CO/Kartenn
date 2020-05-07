@@ -20,21 +20,21 @@ dependencies(){
 
     # - Fast option for demo
     wget https://kevin.le-torch.ovh/finistere.osm
-    # wget https://kevin.le-torch.ovh/morbihan.osm
-    # wget https://kevin.le-torch.ovh/ille-et-vilaine.osm
-    # wget https://kevin.le-torch.ovh/cotes-darmor.osm
+    wget https://kevin.le-torch.ovh/morbihan.osm
+    wget https://kevin.le-torch.ovh/ille-et-vilaine.osm
+    wget https://kevin.le-torch.ovh/cotes-darmor.osm
     
     # - Fastest variant, already merged file (demo only)
-    # wget http://107.173.229.126/bretagne.osm
+    # wget http://107.173.229.126/bretagne.osm # weird stuff happened maybe it's fixed now, untested
 }
 
 configure(){
 
     # - Add files to db
     osm2pgsql finistere.osm -d $database -U $dbuser --hstore --slim --create
-    # osm2pgsql morbihan.osm -d $database -U $dbuser --hstore --slim --append
-    # osm2pgsql ille-et-vilaine.osm -d $database -U $dbuser --hstore --slim --append
-    # osm2pgsql cotes-darmor.osm -d $database -U $dbuser --hstore --slim --append
+    osm2pgsql morbihan.osm -d $database -U $dbuser --hstore --slim --append
+    osm2pgsql ille-et-vilaine.osm -d $database -U $dbuser --hstore --slim --append
+    osm2pgsql cotes-darmor.osm -d $database -U $dbuser --hstore --slim --append
     
     # - Merge file into one (faster outside the db) 
     # osmium merge finistere.osm morbihan.osm ille-et-vilaine.osm cotes-darmor.osm -o bretagne.osm
